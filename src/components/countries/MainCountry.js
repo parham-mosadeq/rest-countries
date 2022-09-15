@@ -32,9 +32,9 @@ const MainCountry = () => {
   };
 
   return (
-    <div className='h-screen text-center flex flex-wrap  flex-col ml-auto mr-auto justify-center align-center'>
+    <div className='flex flex-wrap  flex-col ml-auto mr-auto w-full '>
       <input
-        className='bg-blue-300 rounded-md w-1/4 pl-1 pr-1'
+        className='appearance-none border-2 border-gray-200 rounded-sm leading-tight focus:outline-none font-light   '
         type='text'
         value={search}
         onChange={handleSearchChange}

@@ -12,10 +12,11 @@ import Navbar from './components/Navbar';
 const App = () => {
   return (
     <div>
-      
       <Navbar />
       <CountriesContextProvider>
-        <Routers />
+        <div className='w-11/12 m-auto mt-6'>
+          <Routers />
+        </div>
       </CountriesContextProvider>
     </div>
   );

@@ -6,8 +6,8 @@ const Pagination = ({ countryPerPage, totalPage, paginate }) => {
     pageNumbers.push(i);
   }
   return (
-    <nav className='bg-blue-500 p-1'>
-      <ul className='flex gap-2'>
+    <nav className='bg-blue-900 p-1 mt-5 rounded-t-md'>
+      <ul className='flex gap-2 flex-wrap '>
         {pageNumbers.map((num) => {
           return (
             <li className='text-white ml-auto mr-auto' key={num}>

@@ -9,30 +9,20 @@ const Countries = ({
   continents,
   flags: { svg },
   population,
-  name: { common, official },
+  name: { common },
 }) => {
   return (
     <>
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          backgroundColor: '#444',
-          margin: '1rem auto',
-          color: '#fff',
-        }}
-      >
-        <article style={{ display: 'flex', flexWrap: 'wrap' }}>
-          <div className='img-container'>
-            <Link to={`/countries/${common}`}>
-              <img width={30} height={30} src={svg} alt={common} />
-            </Link>
-          </div>
-          <p>capital:{capital}</p>
-          <p>located in:{continents}</p>
-          <p> population:{trimNumber(population)}</p>
-        </article>
-      </div>
+      <article className='flex max-w-7xl'>
+        <div className='img-container'>
+          <Link to={`/countries/${common}`}>
+            <img className='object-cover' src={svg} alt={common} />
+          </Link>
+        </div>
+        <p>capital:{capital}</p>
+        <p>located in:{continents}</p>
+        <p> population:{trimNumber(population)}</p>
+      </article>
     </>
   );
 };
