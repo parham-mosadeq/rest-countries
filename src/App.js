@@ -1,13 +1,24 @@
 import React from 'react';
-import { useEffect } from 'react';
+
+// *context
+import CountriesContextProvider from './context/CountriesContextProvider';
+
+// *router
+import Routers from './Routers';
+
+// *components
+import Navbar from './components/Navbar';
 
 const App = () => {
-  useEffect(() => {
-    fetch('https://restcountries.com/v3.1/name/iran')
-      .then((resp) => resp.json())
-      .then((data) => console.log(data));
-  }, []);
-  return <div></div>;
+  return (
+    <div>
+      
+      <Navbar />
+      <CountriesContextProvider>
+        <Routers />
+      </CountriesContextProvider>
+    </div>
+  );
 };
 
 export default App;
