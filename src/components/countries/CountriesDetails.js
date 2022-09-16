@@ -5,6 +5,8 @@ import { countriesContext } from '../../context/CountriesContextProvider';
 import { useParams, useNavigate } from 'react-router-dom';
 // *functions
 import { trimNumber } from '../../services/function';
+// *style
+import style from '../../styles/CountriesDetails.module.css';
 
 const CountriesDetails = () => {
   const countries = useContext(countriesContext);
@@ -31,20 +33,50 @@ const CountriesDetails = () => {
         } = fc;
         console.log(fc);
         return (
-          <div key={name}>
-            <div>
-              <img width={100} src={flagSvg} alt={common} />
+          <div className={style.container} key={name}>
+            <div className={style.image}>
+              <img src={flagSvg} alt={common} />
             </div>
-            <p>Name:{common}</p>
-            <p>known as :{official}</p>
-            <p>capital:{capital}</p>
-            <p>region:{region}</p>
-            <p> subregion:{subregion}</p>
-            <p>continents:{continents}</p>
-            <p> startOfWeek:{startOfWeek}</p>
-            <p>neighbors: {borders.join(',')}</p>
-            <p>{trimNumber(population)}</p>
-            <p>{Object.values(languages).join(',')}</p>
+            <div className={style.info}>
+              <p>
+                Name: <span>{common}</span>
+              </p>
+              <p>
+                known as :<span>{official}</span>
+              </p>
+              <p>
+                capital:
+                <span>{capital}</span>
+              </p>
+              <p>
+                region:
+                <span>{region}</span>
+              </p>
+              <p>
+                subregion:
+                <span>{subregion}</span>
+              </p>
+              <p>
+                continents:
+                <span>{continents}</span>
+              </p>
+              <p>
+                startOfWeek:
+                <span>{startOfWeek}</span>
+              </p>
+              <p>
+                neighbors:
+                <span>{borders.join(',')}</span>
+              </p>
+              <p>
+                population:
+                <span>{trimNumber(population)}</span>
+              </p>
+              <p>
+                languages:
+                <span>{Object.values(languages).join(',')}</span>
+              </p>
+            </div>
           </div>
         );
       })}

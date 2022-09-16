@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 // *context
 import { countriesContext } from '../../context/CountriesContextProvider';
 // *components
@@ -10,12 +10,18 @@ import {
   CountryContainer,
   SearchInput,
 } from '../../styles/StyledComponents';
+import { useEffect } from 'react';
 
 const MainCountry = () => {
   const countries = useContext(countriesContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [countryPerPage] = useState(10);
   const [search, setSearch] = useState('');
+  const searchRef = useRef(null);
+
+  useEffect(() => {
+    searchRef.current.focus();
+  }, []);
 
   const searchCountries = countries.filter((country) =>
     country.name.common.toLowerCase().includes(search)
@@ -38,7 +44,14 @@ const MainCountry = () => {
 
   return (
     <div className='flex flex-wrap  flex-col ml-auto mr-auto w-full '>
-      <SearchInput type='text' value={search} onChange={handleSearchChange} />
+      <SearchInput
+        placeholder='country name....'
+        ref={searchRef}
+        type='text'
+        value={search}
+        onChange={handleSearchChange}
+      />
+
       <CountriesContainer>
         {getCountriesPerPage.map((country) => {
           const {

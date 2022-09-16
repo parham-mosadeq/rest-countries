@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // *function
 import { trimNumber } from '../../services/function';
-
 // *styles
 import { Article, CountryImg, Paragraphs } from '../../styles/StyledComponents';
 
