@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 // *function
 import { trimNumber } from '../../services/function';
 
+// *styles
+import { Article, CountryImg, Paragraphs } from '../../styles/StyledComponents';
+
 const Countries = ({
   capital,
   continents,
@@ -13,16 +16,18 @@ const Countries = ({
 }) => {
   return (
     <>
-      <article className='flex max-w-7xl'>
-        <div className='img-container'>
+      <Article>
+        <div>
           <Link to={`/countries/${common}`}>
-            <img className='object-cover' src={svg} alt={common} />
+            <CountryImg src={svg} alt={common} />
           </Link>
         </div>
-        <p>capital:{capital}</p>
-        <p>located in:{continents}</p>
-        <p> population:{trimNumber(population)}</p>
-      </article>
+        <Paragraphs>
+          <p>capital:{capital}</p>
+          <p>located in:{continents}</p>
+          <p> population:{trimNumber(population)}</p>
+        </Paragraphs>
+      </Article>
     </>
   );
 };

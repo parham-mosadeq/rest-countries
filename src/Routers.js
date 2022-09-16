@@ -4,7 +4,6 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 // *components
 import Notfound from './components/notfound/Notfound';
 import MainCountry from './components/countries/MainCountry';
-import Countries from './components/countries/Countries';
 import CountriesDetails from './components/countries/CountriesDetails';
 const Routers = () => {
   return (

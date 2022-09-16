@@ -1,10 +1,15 @@
-import React, { useContext } from 'react';
-import { useState } from 'react';
+import React, { useContext, useState } from 'react';
 // *context
 import { countriesContext } from '../../context/CountriesContextProvider';
 // *components
 import Countries from './Countries';
 import Pagination from '../Pagination';
+// *styles
+import {
+  CountriesContainer,
+  CountryContainer,
+  SearchInput,
+} from '../../styles/StyledComponents';
 
 const MainCountry = () => {
   const countries = useContext(countriesContext);
@@ -15,6 +20,7 @@ const MainCountry = () => {
   const searchCountries = countries.filter((country) =>
     country.name.common.toLowerCase().includes(search)
   );
+  // calculating the length of the array to be shown on each page
   const lastIndexOfCountry = currentPage * countryPerPage;
   const firstIndexOfCountry = lastIndexOfCountry - countryPerPage;
   const getCountriesPerPage = searchCountries.slice(
@@ -27,25 +33,25 @@ const MainCountry = () => {
   };
 
   const paginate = (num) => {
-    console.log(num);
     setCurrentPage(num);
   };
 
   return (
     <div className='flex flex-wrap  flex-col ml-auto mr-auto w-full '>
-      <input
-        className='appearance-none border-2 border-gray-200 rounded-sm leading-tight focus:outline-none font-light   '
-        type='text'
-        value={search}
-        onChange={handleSearchChange}
-      />
-      {getCountriesPerPage.map((country) => {
-        const {
-          name: { common },
-        } = country;
+      <SearchInput type='text' value={search} onChange={handleSearchChange} />
+      <CountriesContainer>
+        {getCountriesPerPage.map((country) => {
+          const {
+            name: { common },
+          } = country;
 
-        return <Countries key={common} {...country} />;
-      })}
+          return (
+            <CountryContainer key={common}>
+              <Countries {...country} />
+            </CountryContainer>
+          );
+        })}
+      </CountriesContainer>
       <Pagination
         countryPerPage={countryPerPage}
         totalPage={countries.length}

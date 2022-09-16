@@ -14,7 +14,6 @@ const Pagination = ({ countryPerPage, totalPage, paginate }) => {
               <span
                 className=' cursor-pointer hover:text-gray-300  '
                 onClick={() => paginate(num)}
-                href='!#'
               >
                 {num}
               </span>
